@@ -79,6 +79,10 @@ public class AdvicingSessionService {
         return false;
     }
 
+    public void createSessionFromExisting(AdvicingSession session) {
+        sessions.put(session.getSessionId(), session);
+    }
+
     public int getTotalSessions() {
         return sessions.size();
     }

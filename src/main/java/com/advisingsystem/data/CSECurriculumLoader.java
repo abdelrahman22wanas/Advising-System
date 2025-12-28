@@ -332,6 +332,68 @@ public class CSECurriculumLoader {
         cs481.addPrerequisite("CS211");
         courseService.addCourse(cs481);
         curriculum.addCourse(cs481, CourseCategory.MAJOR_ELECTIVE, 6);
+
+        Course cs413 = createCourse("CS413", "Deep Learning", "Computer Science", 3,
+            "Neural networks and deep learning", CourseCategory.MAJOR_ELECTIVE, 8);
+        cs413.addPrerequisite("CS412");
+        courseService.addCourse(cs413);
+        curriculum.addCourse(cs413, CourseCategory.MAJOR_ELECTIVE, 8);
+
+        Course cs422 = createCourse("CS422", "Computer Vision", "Computer Science", 3,
+            "Image processing and pattern recognition", CourseCategory.MAJOR_ELECTIVE, 7);
+        cs422.addPrerequisite("CS211");
+        cs422.addPrerequisite("MATH272");
+        courseService.addCourse(cs422);
+        curriculum.addCourse(cs422, CourseCategory.MAJOR_ELECTIVE, 7);
+
+        Course cs432 = createCourse("CS432", "Network Security", "Computer Science", 3,
+            "Network protocols and security", CourseCategory.MAJOR_ELECTIVE, 8);
+        cs432.addPrerequisite("CS431");
+        courseService.addCourse(cs432);
+        curriculum.addCourse(cs432, CourseCategory.MAJOR_ELECTIVE, 8);
+
+        Course cs442 = createCourse("CS442", "IoT and Embedded Systems", "Computer Science", 3,
+            "Internet of Things and embedded programming", CourseCategory.MAJOR_ELECTIVE, 7);
+        cs442.addPrerequisite("CS231");
+        courseService.addCourse(cs442);
+        curriculum.addCourse(cs442, CourseCategory.MAJOR_ELECTIVE, 7);
+
+        Course cs452 = createCourse("CS452", "Distributed Systems", "Computer Science", 3,
+            "Distributed computing and microservices", CourseCategory.MAJOR_ELECTIVE, 8);
+        cs452.addPrerequisite("CS451");
+        courseService.addCourse(cs452);
+        curriculum.addCourse(cs452, CourseCategory.MAJOR_ELECTIVE, 8);
+
+        Course cs462 = createCourse("CS462", "Data Mining", "Computer Science", 3,
+            "Knowledge discovery and data mining", CourseCategory.MAJOR_ELECTIVE, 7);
+        cs462.addPrerequisite("CS351");
+        courseService.addCourse(cs462);
+        curriculum.addCourse(cs462, CourseCategory.MAJOR_ELECTIVE, 7);
+
+        Course cs472 = createCourse("CS472", "Virtual Reality", "Computer Science", 3,
+            "VR/AR development and applications", CourseCategory.MAJOR_ELECTIVE, 7);
+        cs472.addPrerequisite("CS421");
+        courseService.addCourse(cs472);
+        curriculum.addCourse(cs472, CourseCategory.MAJOR_ELECTIVE, 7);
+
+        Course cs482 = createCourse("CS482", "Software Testing", "Computer Science", 3,
+            "Testing methodologies and quality assurance", CourseCategory.MAJOR_ELECTIVE, 6);
+        cs482.addPrerequisite("CS241");
+        courseService.addCourse(cs482);
+        curriculum.addCourse(cs482, CourseCategory.MAJOR_ELECTIVE, 6);
+
+        Course cs415 = createCourse("CS415", "Natural Language Processing", "Computer Science", 3,
+            "Text processing and language understanding", CourseCategory.MAJOR_ELECTIVE, 8);
+        cs415.addPrerequisite("CS411");
+        courseService.addCourse(cs415);
+        curriculum.addCourse(cs415, CourseCategory.MAJOR_ELECTIVE, 8);
+
+        Course cs425 = createCourse("CS425", "Parallel Computing", "Computer Science", 3,
+            "Parallel algorithms and GPU programming", CourseCategory.MAJOR_ELECTIVE, 7);
+        cs425.addPrerequisite("CS311");
+        cs425.addPrerequisite("CS321");
+        courseService.addCourse(cs425);
+        curriculum.addCourse(cs425, CourseCategory.MAJOR_ELECTIVE, 7);
     }
 
     private static void loadFreeElectives(Curriculum curriculum, CourseService courseService) {
@@ -345,6 +407,73 @@ public class CSECurriculumLoader {
             "Digital creativity and design", CourseCategory.FREE_ELECTIVE, 7);
         courseService.addCourse(art101);
         curriculum.addCourse(art101, CourseCategory.FREE_ELECTIVE, 7);
+
+        Course econ101 = createCourse("ECON101", "Microeconomics", "Economics", 3,
+            "Market principles and consumer behavior", CourseCategory.FREE_ELECTIVE, 5);
+        courseService.addCourse(econ101);
+        curriculum.addCourse(econ101, CourseCategory.FREE_ELECTIVE, 5);
+
+        Course econ102 = createCourse("ECON102", "Macroeconomics", "Economics", 3,
+            "National and global economic systems", CourseCategory.FREE_ELECTIVE, 6);
+        courseService.addCourse(econ102);
+        curriculum.addCourse(econ102, CourseCategory.FREE_ELECTIVE, 6);
+
+        Course hist101 = createCourse("HIST101", "World History", "History", 3,
+            "Major historical events and civilizations", CourseCategory.FREE_ELECTIVE, 4);
+        courseService.addCourse(hist101);
+        curriculum.addCourse(hist101, CourseCategory.FREE_ELECTIVE, 4);
+
+        Course bio101 = createCourse("BIO101", "Introduction to Biology", "Biology", 3,
+            "Fundamentals of living organisms", CourseCategory.FREE_ELECTIVE, 3);
+        courseService.addCourse(bio101);
+        curriculum.addCourse(bio101, CourseCategory.FREE_ELECTIVE, 3);
+
+        Course phys202 = createCourse("PHYS202", "Physics II", "Physics", 4,
+            "Electricity, magnetism, and optics", CourseCategory.FREE_ELECTIVE, 4);
+        phys202.addPrerequisite("PHYS201");
+        courseService.addCourse(phys202);
+        curriculum.addCourse(phys202, CourseCategory.FREE_ELECTIVE, 4);
+
+        Course stat201 = createCourse("STAT201", "Statistical Analysis", "Statistics", 3,
+            "Statistical methods and inference", CourseCategory.FREE_ELECTIVE, 5);
+        stat201.addPrerequisite("MATH151");
+        courseService.addCourse(stat201);
+        curriculum.addCourse(stat201, CourseCategory.FREE_ELECTIVE, 5);
+
+        Course mus101 = createCourse("MUS101", "Music Appreciation", "Music", 3,
+            "History and theory of music", CourseCategory.FREE_ELECTIVE, 6);
+        courseService.addCourse(mus101);
+        curriculum.addCourse(mus101, CourseCategory.FREE_ELECTIVE, 6);
+
+        Course pe101 = createCourse("PE101", "Physical Education", "Physical Education", 1,
+            "Health and fitness fundamentals", CourseCategory.FREE_ELECTIVE, 1);
+        courseService.addCourse(pe101);
+        curriculum.addCourse(pe101, CourseCategory.FREE_ELECTIVE, 1);
+
+        Course env101 = createCourse("ENV101", "Environmental Science", "Environmental Studies", 3,
+            "Ecology and environmental issues", CourseCategory.FREE_ELECTIVE, 5);
+        courseService.addCourse(env101);
+        curriculum.addCourse(env101, CourseCategory.FREE_ELECTIVE, 5);
+
+        Course bus301 = createCourse("BUS301", "Marketing Fundamentals", "Business", 3,
+            "Marketing strategies and consumer behavior", CourseCategory.FREE_ELECTIVE, 7);
+        courseService.addCourse(bus301);
+        curriculum.addCourse(bus301, CourseCategory.FREE_ELECTIVE, 7);
+
+        Course law101 = createCourse("LAW101", "Introduction to Law", "Law", 3,
+            "Legal systems and principles", CourseCategory.FREE_ELECTIVE, 6);
+        courseService.addCourse(law101);
+        curriculum.addCourse(law101, CourseCategory.FREE_ELECTIVE, 6);
+
+        Course anth101 = createCourse("ANTH101", "Cultural Anthropology", "Anthropology", 3,
+            "Human cultures and societies", CourseCategory.FREE_ELECTIVE, 5);
+        courseService.addCourse(anth101);
+        curriculum.addCourse(anth101, CourseCategory.FREE_ELECTIVE, 5);
+
+        Course geog101 = createCourse("GEOG101", "Human Geography", "Geography", 3,
+            "Spatial patterns and human activities", CourseCategory.FREE_ELECTIVE, 4);
+        courseService.addCourse(geog101);
+        curriculum.addCourse(geog101, CourseCategory.FREE_ELECTIVE, 4);
     }
 
     private static Course createCourse(String id, String name, String dept, int credits, 

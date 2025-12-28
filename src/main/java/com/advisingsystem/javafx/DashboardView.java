@@ -36,9 +36,15 @@ public class DashboardView extends VBox {
         setSpacing(20);
         setPadding(new Insets(20));
         
-        // Welcome message
+        // Welcome message with icon
+        HBox welcomeBox = new HBox(10);
+        welcomeBox.setAlignment(Pos.CENTER_LEFT);
+        Label welcomeIcon = new Label("🎓");
+        welcomeIcon.setFont(Font.font("System", FontWeight.BOLD, 28));
         Label welcome = new Label("Welcome to the Academic Advising System");
-        welcome.setFont(Font.font("System", FontWeight.BOLD, 20));
+        welcome.setFont(Font.font("System", FontWeight.BOLD, 22));
+        welcome.setStyle("-fx-text-fill: linear-gradient(to right, #667eea, #764ba2);");
+        welcomeBox.getChildren().addAll(welcomeIcon, welcome);
         
         // Statistics cards
         HBox statsBox = createStatisticsCards();
@@ -46,20 +52,24 @@ public class DashboardView extends VBox {
         // Charts
         HBox chartsBox = createCharts();
         
-        // Recent activity (placeholder)
+        // Recent activity
         VBox activityBox = createActivityBox();
         
-        getChildren().addAll(welcome, statsBox, chartsBox, activityBox);
+        getChildren().addAll(welcomeBox, statsBox, chartsBox, activityBox);
     }
     
     private HBox createStatisticsCards() {
         HBox statsBox = new HBox(15);
         statsBox.setAlignment(Pos.CENTER);
         
-        VBox studentCard = createStatCard("Students", String.valueOf(studentService.getTotalStudents()), "#4CAF50");
-        VBox courseCard = createStatCard("Courses", String.valueOf(courseService.getTotalCourses()), "#2196F3");
-        VBox advisorCard = createStatCard("Advisors", String.valueOf(advisorService.getTotalAdvisors()), "#FF9800");
-        VBox sessionCard = createStatCard("Sessions", String.valueOf(sessionService.getTotalSessions()), "#9C27B0");
+        VBox studentCard = createStatCard("👨‍🎓 Students", String.valueOf(studentService.getTotalStudents()), 
+            "linear-gradient(from 0% 0% to 100% 100%, #667eea 0%, #764ba2 100%)", "#ffffff");
+        VBox courseCard = createStatCard("📚 Courses", String.valueOf(courseService.getTotalCourses()), 
+            "linear-gradient(from 0% 0% to 100% 100%, #f093fb 0%, #f5576c 100%)", "#ffffff");
+        VBox advisorCard = createStatCard("👔 Advisors", String.valueOf(advisorService.getTotalAdvisors()), 
+            "linear-gradient(from 0% 0% to 100% 100%, #4facfe 0%, #00f2fe 100%)", "#ffffff");
+        VBox sessionCard = createStatCard("💬 Sessions", String.valueOf(sessionService.getTotalSessions()), 
+            "linear-gradient(from 0% 0% to 100% 100%, #43e97b 0%, #38f9d7 100%)", "#ffffff");
         
         HBox.setHgrow(studentCard, Priority.ALWAYS);
         HBox.setHgrow(courseCard, Priority.ALWAYS);
@@ -71,20 +81,20 @@ public class DashboardView extends VBox {
         return statsBox;
     }
     
-    private VBox createStatCard(String title, String value, String color) {
-        VBox card = new VBox(10);
+    private VBox createStatCard(String title, String value, String bgColor, String textColor) {
+        VBox card = new VBox(8);
         card.getStyleClass().add("stat-card");
         card.setAlignment(Pos.CENTER);
-        card.setPadding(new Insets(20));
-        card.setStyle("-fx-border-color: " + color + "; -fx-border-width: 0 0 3 0;");
-        
-        Label titleLabel = new Label(title);
-        titleLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
-        titleLabel.setStyle("-fx-text-fill: #666;");
+        card.setPadding(new Insets(25, 20, 25, 20));
+        card.setStyle("-fx-background-color: " + bgColor + "; -fx-background-radius: 15;");
         
         Label valueLabel = new Label(value);
-        valueLabel.setFont(Font.font("System", FontWeight.BOLD, 32));
-        valueLabel.setStyle("-fx-text-fill: " + color + ";");
+        valueLabel.setFont(Font.font("System", FontWeight.BOLD, 36));
+        valueLabel.setStyle("-fx-text-fill: " + textColor + ";");
+        
+        Label titleLabel = new Label(title);
+        titleLabel.setFont(Font.font("System", FontWeight.SEMI_BOLD, 15));
+        titleLabel.setStyle("-fx-text-fill: " + textColor + ";");
         
         card.getChildren().addAll(valueLabel, titleLabel);
         

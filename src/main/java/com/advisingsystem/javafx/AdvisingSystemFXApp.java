@@ -59,7 +59,8 @@ public class AdvisingSystemFXApp extends Application {
             advisorService, 
             gradeService, 
             enrollmentService,
-            curriculumService
+            curriculumService,
+            sessionService
         );
     }
     

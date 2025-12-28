@@ -30,8 +30,8 @@ public class SessionView extends VBox {
         setSpacing(15);
         setPadding(new Insets(20));
         
-        HBox toolbar = createToolbar();
         sessionTable = createSessionTable();
+        HBox toolbar = createToolbar();
         VBox.setVgrow(sessionTable, Priority.ALWAYS);
         
         getChildren().addAll(toolbar, sessionTable);
