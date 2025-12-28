@@ -28,9 +28,12 @@ public class CourseView extends VBox {
         setSpacing(15);
         setPadding(new Insets(20));
         
-        HBox toolbar = createToolbar();
+        // Create table first
         courseTable = createCourseTable();
         VBox.setVgrow(courseTable, Priority.ALWAYS);
+        
+        // Create toolbar after table
+        HBox toolbar = createToolbar();
         
         getChildren().addAll(toolbar, courseTable);
     }

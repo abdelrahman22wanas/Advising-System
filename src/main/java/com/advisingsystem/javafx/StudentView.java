@@ -35,12 +35,12 @@ public class StudentView extends VBox {
         setSpacing(15);
         setPadding(new Insets(20));
         
-        // Top toolbar
-        HBox toolbar = createToolbar();
-        
-        // Table
+        // Table (create first)
         studentTable = createStudentTable();
         VBox.setVgrow(studentTable, Priority.ALWAYS);
+        
+        // Top toolbar (create after table)
+        HBox toolbar = createToolbar();
         
         getChildren().addAll(toolbar, studentTable);
     }
