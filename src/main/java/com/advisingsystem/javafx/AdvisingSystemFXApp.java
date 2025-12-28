@@ -16,6 +16,7 @@ public class AdvisingSystemFXApp extends Application {
     private AdvicingSessionService sessionService;
     private GradeService gradeService;
     private EnrollmentService enrollmentService;
+    private CurriculumService curriculumService;
     
     @Override
     public void start(Stage primaryStage) {
@@ -28,13 +29,14 @@ public class AdvisingSystemFXApp extends Application {
             advisorService, 
             sessionService, 
             gradeService, 
-            enrollmentService
+            enrollmentService,
+            curriculumService
         );
         
         Scene scene = new Scene(mainView, 1400, 900);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         
-        primaryStage.setTitle("Academic Advising System - JavaFX");
+        primaryStage.setTitle("Academic Advising System - CSE Curriculum");
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
         primaryStage.show();
@@ -47,6 +49,7 @@ public class AdvisingSystemFXApp extends Application {
         sessionService = new AdvicingSessionService();
         gradeService = new GradeService(courseService, studentService);
         enrollmentService = new EnrollmentService(studentService, courseService, gradeService);
+        curriculumService = new CurriculumService();
     }
     
     private void loadSampleData() {
@@ -55,7 +58,8 @@ public class AdvisingSystemFXApp extends Application {
             courseService, 
             advisorService, 
             gradeService, 
-            enrollmentService
+            enrollmentService,
+            curriculumService
         );
     }
     

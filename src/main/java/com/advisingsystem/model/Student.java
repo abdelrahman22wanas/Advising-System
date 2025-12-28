@@ -15,6 +15,8 @@ public class Student {
     private List<Course> completedCourses;
     private List<Course> enrolledCourses;
     private double gpa;
+    private int currentSemester;
+    private int totalCreditsEarned;
 
     public Student(String studentId, String firstName, String lastName, String email, String major, int graduationYear) {
         this.studentId = studentId;
@@ -26,6 +28,8 @@ public class Student {
         this.completedCourses = new ArrayList<>();
         this.enrolledCourses = new ArrayList<>();
         this.gpa = 0.0;
+        this.currentSemester = 1;
+        this.totalCreditsEarned = 0;
     }
 
     // Getters and Setters
@@ -79,6 +83,7 @@ public class Student {
 
     public void addCompletedCourse(Course course) {
         completedCourses.add(course);
+        totalCreditsEarned += course.getCredits();
     }
 
     public List<Course> getEnrolledCourses() {
@@ -101,8 +106,31 @@ public class Student {
         this.gpa = Math.min(4.0, Math.max(0.0, gpa));
     }
 
+    public int getCurrentSemester() {
+        return currentSemester;
+    }
+
+    public void setCurrentSemester(int currentSemester) {
+        this.currentSemester = currentSemester;
+    }
+
+    public int getTotalCreditsEarned() {
+        return totalCreditsEarned;
+    }
+
+    public void setTotalCreditsEarned(int totalCreditsEarned) {
+        this.totalCreditsEarned = totalCreditsEarned;
+    }
+
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public String getAcademicStanding() {
+        if (totalCreditsEarned < 30) return "Freshman";
+        if (totalCreditsEarned < 60) return "Sophomore";
+        if (totalCreditsEarned < 90) return "Junior";
+        return "Senior";
     }
 
     @Override
@@ -112,6 +140,8 @@ public class Student {
                 ", name='" + getFullName() + '\'' +
                 ", major='" + major + '\'' +
                 ", gpa=" + String.format("%.2f", gpa) +
+                ", standing='" + getAcademicStanding() + '\'' +
+                ", credits=" + totalCreditsEarned +
                 ", graduationYear=" + graduationYear +
                 '}';
     }

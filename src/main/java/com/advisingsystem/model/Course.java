@@ -15,6 +15,9 @@ public class Course {
     private int enrolledCount;
     private String semester;
     private String instructor;
+    private CourseCategory category;
+    private String description;
+    private int recommendedSemester;
 
     public Course(String courseId, String courseName, String department, int credits, int capacity, String semester) {
         this.courseId = courseId;
@@ -25,6 +28,9 @@ public class Course {
         this.enrolledCount = 0;
         this.prerequisites = new ArrayList<>();
         this.semester = semester;
+        this.category = CourseCategory.FREE_ELECTIVE;
+        this.description = "";
+        this.recommendedSemester = 0;
     }
 
     // Getters and Setters
@@ -110,6 +116,30 @@ public class Course {
         return capacity - enrolledCount;
     }
 
+    public CourseCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(CourseCategory category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getRecommendedSemester() {
+        return recommendedSemester;
+    }
+
+    public void setRecommendedSemester(int recommendedSemester) {
+        this.recommendedSemester = recommendedSemester;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
@@ -117,6 +147,7 @@ public class Course {
                 ", courseName='" + courseName + '\'' +
                 ", credits=" + credits +
                 ", semester='" + semester + '\'' +
+                ", category=" + (category != null ? category.getDisplayName() : "N/A") +
                 ", available=" + getAvailableSeats() + "/" + capacity +
                 '}';
     }

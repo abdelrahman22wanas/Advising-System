@@ -19,19 +19,22 @@ public class MainView extends BorderPane {
     private AdvicingSessionService sessionService;
     private GradeService gradeService;
     private EnrollmentService enrollmentService;
+    private CurriculumService curriculumService;
     
     private StackPane contentArea;
     private Label titleLabel;
     
     public MainView(StudentService studentService, CourseService courseService,
                     AdvisorService advisorService, AdvicingSessionService sessionService,
-                    GradeService gradeService, EnrollmentService enrollmentService) {
+                    GradeService gradeService, EnrollmentService enrollmentService,
+                    CurriculumService curriculumService) {
         this.studentService = studentService;
         this.courseService = courseService;
         this.advisorService = advisorService;
         this.sessionService = sessionService;
         this.gradeService = gradeService;
         this.enrollmentService = enrollmentService;
+        this.curriculumService = curriculumService;
         
         initializeUI();
     }
@@ -87,6 +90,7 @@ public class MainView extends BorderPane {
         navTitle.getStyleClass().add("nav-title");
         
         Button dashboardBtn = createNavButton("📊 Dashboard", () -> showDashboard());
+        Button progressBtn = createNavButton("📈 Degree Progress", () -> showDegreeProgress());
         Button studentsBtn = createNavButton("👨‍🎓 Students", () -> showStudents());
         Button coursesBtn = createNavButton("📚 Courses", () -> showCourses());
         Button advisorsBtn = createNavButton("👔 Advisors", () -> showAdvisors());
@@ -103,6 +107,7 @@ public class MainView extends BorderPane {
             navTitle,
             new Separator(),
             dashboardBtn,
+            progressBtn,
             studentsBtn,
             coursesBtn,
             advisorsBtn,
@@ -175,14 +180,23 @@ public class MainView extends BorderPane {
         contentArea.getChildren().add(gradeView);
     }
     
+    private void showDegreeProgress() {
+        titleLabel.setText("Degree Progress Tracker");
+        DegreeProgressView progressView = new DegreeProgressView(studentService, curriculumService);
+        contentArea.getChildren().clear();
+        contentArea.getChildren().add(progressView);
+    }
+    
     private void showAbout() {
         titleLabel.setText("About");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
-        alert.setHeaderText("Academic Advising System - JavaFX Edition");
+        alert.setHeaderText("Academic Advising System - CSE Curriculum Edition");
         alert.setContentText("Version 2.0.0\nJava 21 with JavaFX\n\n" +
             "A comprehensive system for managing academic advising,\n" +
-            "student records, courses, and enrollment.\n\n" +
+            "student records, courses, enrollment, and degree progress.\n\n" +
+            "Includes complete CSE curriculum with 60+ courses,\n" +
+            "prerequisites, and graduation requirements.\n\n" +
             "© 2025 Academic Advising System");
         alert.showAndWait();
     }
