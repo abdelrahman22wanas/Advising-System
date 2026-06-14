@@ -6,29 +6,34 @@ A modern, fully responsive Academic Advising System built with **Spring Boot RES
 
 ```
 Advising-System/
-├── backend/                    Spring Boot REST API (Java 21)
-│   ├── src/main/java/         Java source code
-│   ├── src/main/resources/     Configuration files
-│   ├── pom.xml                 Maven configuration
-│   └── README.md               Backend documentation
+├── backend/                    ✅ Spring Boot REST API (Java 21)
+│   ├── src/main/java/          Java source code
+│   ├── src/main/resources/      Configuration files
+│   ├── pom.xml                  Maven configuration
+│   └── README.md                Backend documentation
 │
-├── frontend/                   React Application (to be created)
-│   ├── src/                    React source code
-│   ├── public/                 Static assets
-│   └── package.json            NPM dependencies
+├── frontend/                   ✅ React Application (COMPLETE)
+│   ├── src/                     React source code
+│   │   ├── pages/               Dashboard, StudentList, CourseList, AdvisorList
+│   │   ├── services/            API client
+│   │   └── styles/              Responsive CSS
+│   ├── public/                  Static assets
+│   ├── build/                   Production build
+│   ├── package.json             NPM dependencies
+│   └── README.md                Frontend documentation
 │
-├── docs/                       Documentation (14 files)
-│   ├── DEPLOY_TO_VERCEL.md    ⭐ Deployment guide
-│   ├── REACT_SETUP.md          Frontend setup
-│   ├── DEPLOYMENT_READY.md     Quick reference
+├── docs/                        📚 Documentation (14 files)
+│   ├── DEPLOY_TO_VERCEL.md     ⭐ Deployment guide
+│   ├── REACT_SETUP.md           Frontend setup
+│   ├── DEPLOYMENT_READY.md      Quick reference
 │   └── ... (more docs)
 │
-├── scripts/                    Build and deployment scripts
-│   ├── quick-deploy.bat        Windows build
-│   ├── quick-deploy.sh         Linux/Mac build
+├── scripts/                     Build and deployment scripts
+│   ├── quick-deploy.bat         Windows build
+│   ├── quick-deploy.sh          Linux/Mac build
 │   └── ... (more scripts)
 │
-└── archive/                    Reference materials
+└── archive/                     Reference materials
     └── PDFs, spreadsheets, etc.
 ```
 
@@ -42,11 +47,10 @@ java -jar target/advising-system-1.0.0.jar
 ```
 **API**: http://localhost:8080/api
 
-### 2️⃣ Frontend (React)
+### 2️⃣ Frontend (React) - ✅ READY TO RUN
 ```bash
-npx create-react-app frontend
 cd frontend
-npm install axios react-router-dom
+npm install
 npm start
 ```
 **App**: http://localhost:3000
@@ -161,22 +165,19 @@ Reference Files:    archive/
 
 ## 📖 Next Steps
 
-1. **Read Documentation**
-   - Start with [docs/DEPLOY_TO_VERCEL.md](docs/DEPLOY_TO_VERCEL.md)
+1. **Review Documentation**
+   - Start with [frontend/README.md](frontend/README.md) for frontend details
+   - Then read [docs/DEPLOY_TO_VERCEL.md](docs/DEPLOY_TO_VERCEL.md) for deployment
 
-2. **Build Backend**
-   - `cd backend && mvn clean package -DskipTests`
+2. **Test Locally**
+   - Start backend: `cd backend && mvn clean package && java -jar target/advising-system-1.0.0.jar`
+   - Start frontend: `cd frontend && npm start`
+   - Visit http://localhost:3000
 
-3. **Test Locally**
-   - `java -jar backend/target/advising-system-1.0.0.jar`
-
-4. **Create Frontend**
-   - `npx create-react-app frontend`
-   - Follow [docs/REACT_SETUP.md](docs/REACT_SETUP.md)
-
-5. **Deploy**
-   - Backend → Railway/Render
+3. **Deploy to Production**
+   - Backend → Railway/Render/Heroku
    - Frontend → Vercel
+   - See deployment guide for details
 
 ---
 
