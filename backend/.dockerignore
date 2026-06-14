@@ -1,0 +1,26 @@
+# Docker build exclusions - Backend
+
+# Maven
+target/
+.m2/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Other
+node_modules/
+.env
+.env.local
+README.md
