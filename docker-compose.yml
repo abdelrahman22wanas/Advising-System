@@ -20,8 +20,6 @@ services:
       start_period: 5s
     networks:
       - advising-network
-    volumes:
-      - ./backend/src:/app/src  # For development hot-reload (optional)
 
   # React Frontend
   frontend:

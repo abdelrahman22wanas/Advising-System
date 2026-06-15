@@ -149,6 +149,13 @@ gcloud run deploy advising-frontend --image gcr.io/PROJECT-ID/advising-frontend
 
 ---
 
+## Notes
+
+- The backend image includes `curl` so the health check can run inside the container.
+- `docker-compose.yml` is optimized for local/full-stack runs and does not mount source code.
+
+---
+
 ## Docker Compose Networking
 
 Services communicate via container names:

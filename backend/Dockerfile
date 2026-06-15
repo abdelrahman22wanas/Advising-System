@@ -23,6 +23,11 @@ WORKDIR /app
 # Copy JAR from builder
 COPY --from=builder /build/target/advising-system-1.0.0.jar advising-system.jar
 
+# Add curl for the container health check
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
 # Expose port
 EXPOSE 8080
 

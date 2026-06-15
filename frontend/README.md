@@ -121,6 +121,18 @@ npm run build
 # Output: ./build/
 ```
 
+### Deploy with Docker
+```bash
+cd ..
+docker-compose up --build
+```
+
+Or build just the frontend image:
+```bash
+cd frontend
+docker build -t advising-frontend:latest .
+```
+
 ### Deploy to Vercel
 ```bash
 npm install -g vercel

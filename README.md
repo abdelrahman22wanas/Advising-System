@@ -120,6 +120,7 @@ No database required - data is in-memory!
 |--------|---------|----------|-----------|------|
 | ⭐ **Recommended** | Railway | Vercel | 5 min | Free |
 | **Alternative** | Render | Vercel | 10 min | Free |
+| **Docker** | Container | Container | 5 min | Free |
 | **Traditional** | Heroku | Vercel | 15 min | Paid |
 
 See [docs/DEPLOY_TO_VERCEL.md](docs/DEPLOY_TO_VERCEL.md) for detailed instructions.
@@ -175,9 +176,9 @@ Reference Files:    archive/
    - Visit http://localhost:3000
 
 3. **Deploy to Production**
-   - Backend → Railway/Render/Heroku
-   - Frontend → Vercel
-   - See deployment guide for details
+   - Backend → Railway/Render/Heroku or Docker
+   - Frontend → Vercel or Docker
+   - See deployment guides for details
 
 ---
 
