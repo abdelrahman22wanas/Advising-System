@@ -139,6 +139,9 @@ npm install -g vercel
 vercel
 ```
 
+If you deploy from the repo root, Vercel will use `vercel.json` to build `frontend/`.
+If you deploy only `frontend/`, Vercel can use the local `vercel.json` for SPA routing.
+
 See [../docs/DEPLOY_TO_VERCEL.md](../docs/DEPLOY_TO_VERCEL.md) for complete deployment guide.
 
 ---

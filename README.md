@@ -1,6 +1,6 @@
 # 🎓 Academic Advising System - Web Application
 
-A modern, fully responsive Academic Advising System built with **Spring Boot REST API** and **React** frontend, ready for deployment to Vercel.
+A modern, fully responsive Academic Advising System built with **Spring Boot REST API** and **React** frontend. The frontend is ready for Vercel; the backend should be hosted separately.
 
 ## 📦 Project Structure (Reorganized)
 
@@ -110,7 +110,7 @@ No database required - data is in-memory!
 | **Backend** | Java 21 LTS + Spring Boot 3.2 |
 | **Frontend** | React 18+ + Axios |
 | **Build** | Maven 3.6+ |
-| **Deployment** | Vercel + Railway/Render/Heroku |
+| **Deployment** | Vercel (frontend) + Railway/Render/Heroku/Docker (backend) |
 
 ---
 

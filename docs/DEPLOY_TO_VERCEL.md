@@ -1,5 +1,7 @@
 # 🚀 Deploy Advising System to Vercel
 
+> **Note:** Vercel is for the React frontend. The Spring Boot backend should stay on Railway, Render, Docker, or another long-running host.
+
 ## What Was Done ✅
 
 This project has been successfully **converted from JavaFX desktop app to a Spring Boot REST API**. Here's what's ready:
@@ -209,6 +211,8 @@ npm install -g vercel
 vercel
 ```
 
+If you deploy from the repository root, the root `vercel.json` points Vercel at `frontend/`.
+
 #### Option B: Using GitHub
 
 1. Push your code to GitHub:
@@ -228,6 +232,11 @@ vercel
    ```
 
 6. Click "Deploy"
+
+### If you want the backend on the web too
+- Keep the backend on Railway/Render/Docker/Heroku
+- Point `REACT_APP_API_URL` to that backend URL
+- Vercel should only host the React app
 
 ---
 
