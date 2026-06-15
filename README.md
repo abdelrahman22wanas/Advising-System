@@ -195,13 +195,4 @@ See [docs/FILES_REFERENCE.md](docs/FILES_REFERENCE.md) for complete file structu
 
 ---
 
-## 📞 Help & Support
 
-- **Deployment Issues?** → [docs/DEPLOY_TO_VERCEL.md](docs/DEPLOY_TO_VERCEL.md#-troubleshooting)
-- **Frontend Questions?** → [docs/REACT_SETUP.md](docs/REACT_SETUP.md)
-- **API Questions?** → [docs/DEPLOYMENT_READY.md](docs/DEPLOYMENT_READY.md)
-- **Backend Questions?** → [backend/README.md](backend/README.md)
-
----
-
-**Ready to deploy?** Start with **[docs/DEPLOY_TO_VERCEL.md](docs/DEPLOY_TO_VERCEL.md)** 🚀
