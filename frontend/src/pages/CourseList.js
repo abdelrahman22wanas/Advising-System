@@ -7,6 +7,7 @@ export default function CourseList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filterDept, setFilterDept] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -27,6 +28,20 @@ export default function CourseList() {
     fetchCourses();
   }, [filterDept]);
 
+  const filtered = courses.filter(c => {
+    if (!searchTerm) return true;
+    const term = searchTerm.toLowerCase();
+    return (
+      c.courseId?.toLowerCase().includes(term) ||
+      c.courseName?.toLowerCase().includes(term) ||
+      c.department?.toLowerCase().includes(term) ||
+      String(c.credits).includes(term) ||
+      c.instructor?.toLowerCase().includes(term) ||
+      c.semester?.toLowerCase().includes(term) ||
+      c.category?.toLowerCase().includes(term)
+    );
+  });
+
   if (loading) return <div className="loading">Loading courses...</div>;
 
   return (
@@ -34,6 +49,12 @@ export default function CourseList() {
       <h1>📚 Courses</h1>
 
       <div className="filter-bar">
+        <input
+          type="text"
+          placeholder="Search any field..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <input
           type="text"
           placeholder="Filter by department..."
@@ -45,7 +66,7 @@ export default function CourseList() {
       {error && <div className="error">{error}</div>}
 
       <div className="course-grid">
-        {courses.map(course => (
+        {filtered.map(course => (
           <div key={course.courseId} className="course-card">
             <h3>{course.courseName}</h3>
             <span className="course-code">{course.courseId}</span>
@@ -57,7 +78,7 @@ export default function CourseList() {
         ))}
       </div>
 
-      {courses.length === 0 && !loading && (
+      {filtered.length === 0 && !loading && (
         <div className="no-data">No courses found</div>
       )}
     </div>

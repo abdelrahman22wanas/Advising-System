@@ -6,6 +6,7 @@ export default function AdvisorList() {
   const [advisors, setAdvisors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchAdvisors = async () => {
@@ -21,6 +22,20 @@ export default function AdvisorList() {
     fetchAdvisors();
   }, []);
 
+  const filtered = advisors.filter(a => {
+    if (!searchTerm) return true;
+    const term = searchTerm.toLowerCase();
+    return (
+      a.advisorId?.toLowerCase().includes(term) ||
+      a.firstName?.toLowerCase().includes(term) ||
+      a.lastName?.toLowerCase().includes(term) ||
+      a.email?.toLowerCase().includes(term) ||
+      a.office?.toLowerCase().includes(term) ||
+      a.phoneNumber?.toLowerCase().includes(term) ||
+      a.specializations?.some(s => s.toLowerCase().includes(term))
+    );
+  });
+
   if (loading) return <div className="loading">Loading advisors...</div>;
 
   return (
@@ -29,8 +44,17 @@ export default function AdvisorList() {
 
       {error && <div className="error">{error}</div>}
 
+      <div className="filter-bar">
+        <input
+          type="text"
+          placeholder="Search any field..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       <div className="advisors-grid">
-        {advisors.map(advisor => (
+        {filtered.map(advisor => (
           <div key={advisor.advisorId} className="advisor-card">
             <h3>{advisor.firstName} {advisor.lastName}</h3>
             <p><strong>ID:</strong> {advisor.advisorId}</p>
@@ -42,7 +66,7 @@ export default function AdvisorList() {
         ))}
       </div>
 
-      {advisors.length === 0 && (
+      {filtered.length === 0 && (
         <div className="no-data">No advisors found</div>
       )}
     </div>

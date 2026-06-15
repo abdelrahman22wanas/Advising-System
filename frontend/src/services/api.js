@@ -85,6 +85,21 @@ export const sessionAPI = {
   updateStatus: (id, status) => api.put(`/sessions/${id}/status/${status}`),
 };
 
+export const curriculumAPI = {
+  getMajors: () => api.get('/curriculum/majors'),
+  getByMajor: (major) => api.get(`/curriculum/${major}`),
+  getProgress: (studentId) => api.get(`/curriculum/progress/${studentId}`),
+  getRecommendations: (studentId, semester) =>
+    api.get(`/curriculum/recommendations/${studentId}/${semester}`),
+  getRemaining: (studentId) => api.get(`/curriculum/remaining/${studentId}`),
+};
+
+export const warningAPI = {
+  getAll: () => api.get('/warnings'),
+  getStudent: (studentId) => api.get(`/warnings/student/${studentId}`),
+  generate: () => api.post('/warnings/generate'),
+};
+
 export const dashboardAPI = {
   getStats: () => api.get('/dashboard/stats'),
   health: () => api.get('/dashboard/health'),

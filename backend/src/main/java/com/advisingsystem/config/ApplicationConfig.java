@@ -46,6 +46,14 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public WarningService warningService(
+            StudentService studentService,
+            GradeService gradeService,
+            CurriculumService curriculumService) {
+        return new WarningService(studentService, gradeService, curriculumService);
+    }
+
+    @Bean
     public CommandLineRunner initializeData(
             StudentService studentService,
             CourseService courseService,

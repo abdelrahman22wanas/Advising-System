@@ -7,6 +7,7 @@ export default function StudentList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filterMajor, setFilterMajor] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -27,6 +28,20 @@ export default function StudentList() {
     fetchStudents();
   }, [filterMajor]);
 
+  const filtered = students.filter(s => {
+    if (!searchTerm) return true;
+    const term = searchTerm.toLowerCase();
+    return (
+      s.studentId?.toLowerCase().includes(term) ||
+      s.firstName?.toLowerCase().includes(term) ||
+      s.lastName?.toLowerCase().includes(term) ||
+      s.email?.toLowerCase().includes(term) ||
+      s.major?.toLowerCase().includes(term) ||
+      String(s.graduationYear).includes(term) ||
+      String(s.gpa).includes(term)
+    );
+  });
+
   const handleDelete = async (id) => {
     if (window.confirm('Delete this student?')) {
       try {
@@ -45,6 +60,12 @@ export default function StudentList() {
       <h1>👨‍🎓 Students</h1>
       
       <div className="filter-bar">
+        <input
+          type="text"
+          placeholder="Search any field..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <input
           type="text"
           placeholder="Filter by major..."
@@ -68,7 +89,7 @@ export default function StudentList() {
             </tr>
           </thead>
           <tbody>
-            {students.map(student => (
+            {filtered.map(student => (
               <tr key={student.studentId}>
                 <td>{student.studentId}</td>
                 <td>{student.firstName} {student.lastName}</td>
@@ -89,7 +110,7 @@ export default function StudentList() {
         </table>
       </div>
 
-      {students.length === 0 && (
+      {filtered.length === 0 && (
         <div className="no-data">No students found</div>
       )}
     </div>

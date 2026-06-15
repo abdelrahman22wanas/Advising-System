@@ -4,8 +4,13 @@ import Dashboard from './pages/Dashboard';
 import StudentList from './pages/StudentList';
 import CourseList from './pages/CourseList';
 import AdvisorList from './pages/AdvisorList';
+import Enrollments from './pages/Enrollments';
+import Sessions from './pages/Sessions';
+import Grades from './pages/Grades';
+import DegreeProgress from './pages/DegreeProgress';
 import ThemeToggle from './components/ThemeToggle';
 import './styles/App.css';
+import './styles/Modal.css';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -36,6 +41,10 @@ function App() {
                 <li><NavLink to="/students">Students</NavLink></li>
                 <li><NavLink to="/courses">Courses</NavLink></li>
                 <li><NavLink to="/advisors">Advisors</NavLink></li>
+                <li><NavLink to="/enrollments">Enrollments</NavLink></li>
+                <li><NavLink to="/sessions">Sessions</NavLink></li>
+                <li><NavLink to="/grades">Grades</NavLink></li>
+                <li><NavLink to="/degree-progress">Degree Progress</NavLink></li>
               </ul>
             </nav>
           </aside>
@@ -46,6 +55,10 @@ function App() {
               <Route path="/students" element={<StudentList />} />
               <Route path="/courses" element={<CourseList />} />
               <Route path="/advisors" element={<AdvisorList />} />
+              <Route path="/enrollments" element={<Enrollments />} />
+              <Route path="/sessions" element={<Sessions />} />
+              <Route path="/grades" element={<Grades />} />
+              <Route path="/degree-progress" element={<DegreeProgress />} />
             </Routes>
           </main>
         </div>
