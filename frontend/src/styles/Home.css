@@ -1,0 +1,130 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-hero {
+  margin-bottom: 3rem;
+}
+
+.home-logo {
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+}
+
+.home-hero {
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.home-hero:hover::after {
+  opacity: 1;
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--accent-primary) 12%, transparent),
+    0 0 60px color-mix(in srgb, var(--accent-primary) 6%, transparent);
+}
+
+.home-hero:hover {
+  transform: scale(1.02);
+}
+
+.home-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.5px;
+}
+
+.home-tagline {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.home-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.home-nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.25rem 1rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  cursor: pointer;
+}
+
+.home-nav-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--card-accent) 30%, transparent);
+  border-color: var(--card-accent);
+}
+
+.home-nav-card:active {
+  transform: translateY(-2px) scale(1);
+}
+
+.home-nav-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.home-nav-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.home-nav-card:hover .home-nav-label {
+  color: var(--card-accent);
+}
+
+@media (max-width: 600px) {
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .home-tagline {
+    font-size: 1rem;
+  }
+
+  .home-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

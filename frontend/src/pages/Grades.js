@@ -36,6 +36,16 @@ export default function Grades() {
     fetchData();
   }, []);
 
+  const getStudentName = (id) => {
+    const s = students.find(st => st.studentId === id);
+    return s ? `${s.firstName} ${s.lastName}` : id;
+  };
+
+  const getCourseName = (id) => {
+    const c = courses.find(co => co.courseId === id);
+    return c ? c.courseName : id;
+  };
+
   const handleStudentSelect = async (studentId) => {
     setSelectedStudent(studentId);
     setGradeForm({ ...gradeForm, studentId });
@@ -82,16 +92,6 @@ export default function Grades() {
     } catch (err) {
       setError(err.displayMessage);
     }
-  };
-
-  const getStudentName = (id) => {
-    const s = students.find(st => st.studentId === id);
-    return s ? `${s.firstName} ${s.lastName}` : id;
-  };
-
-  const getCourseName = (id) => {
-    const c = courses.find(co => co.courseId === id);
-    return c ? c.courseName : id;
   };
 
   if (loading) return <div className="loading">Loading grades...</div>;

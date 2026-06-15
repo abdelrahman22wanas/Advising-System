@@ -37,6 +37,7 @@ export const courseAPI = {
   getAll: () => api.get('/courses'),
   getById: (id) => api.get(`/courses/${id}`),
   create: (course) => api.post('/courses', course),
+  delete: (id) => api.delete(`/courses/${id}`),
   getAvailable: () => api.get('/courses/available'),
   getByDepartment: (dept) => api.get(`/courses/department/${dept}`),
   getBySemester: (sem) => api.get(`/courses/semester/${sem}`),
@@ -46,6 +47,7 @@ export const advisorAPI = {
   getAll: () => api.get('/advisors'),
   getById: (id) => api.get(`/advisors/${id}`),
   create: (advisor) => api.post('/advisors', advisor),
+  delete: (id) => api.delete(`/advisors/${id}`),
   assignStudent: (advisorId, studentId) =>
     api.post(`/advisors/${advisorId}/students/${studentId}`),
   getStudents: (advisorId) => api.get(`/advisors/${advisorId}/students`),

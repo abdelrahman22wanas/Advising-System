@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
+import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import StudentList from './pages/StudentList';
 import CourseList from './pages/CourseList';
@@ -11,33 +12,40 @@ import DegreeProgress from './pages/DegreeProgress';
 import ThemeToggle from './components/ThemeToggle';
 import './styles/App.css';
 import './styles/Modal.css';
+import './styles/Home.css';
 
-function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   return (
-    <Router>
-      <div className="app">
-        <header className="navbar">
-          <div className="navbar-content">
-            <button
-              className="menu-toggle"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-            >
-              ☰
-            </button>
-            <h1>Academic Advising System</h1>
-            <div className="navbar-spacer" />
-            <ThemeToggle />
-          </div>
-        </header>
+    <div className="app">
+      <header className="navbar">
+        <div className="navbar-content">
+          <h1>Academic Advising System</h1>
+          <div className="navbar-spacer" />
+          <ThemeToggle />
+        </div>
+      </header>
 
-        <div className="main-container">
-          <aside className={`sidebar ${sidebarOpen ? '' : 'closed'}`}>
-            <h2>Menu</h2>
+      <div className="main-container">
+        {!isHome && (
+          <aside className="sidebar">
+            <NavLink to="/" className="sidebar-brand" end>
+              <svg className="sidebar-logo" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                <path d="M2 10l10-5 10 5" />
+              </svg>
+              <span className="sidebar-brand-text">
+                <span className="sidebar-brand-title">Academic Advising</span>
+                <span className="sidebar-brand-subtitle">System</span>
+              </span>
+            </NavLink>
+            <div className="sidebar-divider" />
             <nav className="nav-menu">
               <ul>
-                <li><NavLink to="/" end>Dashboard</NavLink></li>
+                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                 <li><NavLink to="/students">Students</NavLink></li>
                 <li><NavLink to="/courses">Courses</NavLink></li>
                 <li><NavLink to="/advisors">Advisors</NavLink></li>
@@ -48,25 +56,34 @@ function App() {
               </ul>
             </nav>
           </aside>
+        )}
 
-          <main className="content">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/students" element={<StudentList />} />
-              <Route path="/courses" element={<CourseList />} />
-              <Route path="/advisors" element={<AdvisorList />} />
-              <Route path="/enrollments" element={<Enrollments />} />
-              <Route path="/sessions" element={<Sessions />} />
-              <Route path="/grades" element={<Grades />} />
-              <Route path="/degree-progress" element={<DegreeProgress />} />
-            </Routes>
-          </main>
-        </div>
-
-        <footer className="footer">
-          <p>&copy; 2024 Academic Advising System</p>
-        </footer>
+        <main className={`content ${isHome ? 'content-home' : ''}`}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/students" element={<StudentList />} />
+            <Route path="/courses" element={<CourseList />} />
+            <Route path="/advisors" element={<AdvisorList />} />
+            <Route path="/enrollments" element={<Enrollments />} />
+            <Route path="/sessions" element={<Sessions />} />
+            <Route path="/grades" element={<Grades />} />
+            <Route path="/degree-progress" element={<DegreeProgress />} />
+          </Routes>
+        </main>
       </div>
+
+      <footer className="footer">
+        <p>&copy; 2024 Academic Advising System</p>
+      </footer>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
