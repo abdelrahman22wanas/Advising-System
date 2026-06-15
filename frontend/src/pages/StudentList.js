@@ -107,10 +107,9 @@ export default function StudentList() {
 
   return (
     <div className="student-list">
-      <div className="list-header">
-        <h1>Students</h1>
-        <button className="btn-primary" onClick={openCreate}>+ Add Student</button>
-      </div>
+      <h1>Students</h1>
+
+      {error && <div className="error">{error}</div>}
 
       <div className="filter-bar">
         <input
@@ -143,9 +142,8 @@ export default function StudentList() {
           min="0"
           max="4"
         />
+        <button className="btn-primary" onClick={openCreate}>+ Add Student</button>
       </div>
-
-      {error && <div className="error">{error}</div>}
 
       <div className="students-table-wrapper">
         <table className="students-table">
@@ -191,44 +189,38 @@ export default function StudentList() {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Add Student">
         <form className="modal-form" onSubmit={handleCreate}>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Student ID</label>
-              <input name="studentId" value={formData.studentId} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Graduation Year</label>
-              <input name="graduationYear" type="number" value={formData.graduationYear} onChange={handleChange} required />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>First Name</label>
-              <input name="firstName" value={formData.firstName} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Last Name</label>
-              <input name="lastName" value={formData.lastName} onChange={handleChange} required />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Email</label>
+          <label>
+            Student ID
+            <input name="studentId" value={formData.studentId} onChange={handleChange} required />
+          </label>
+          <label>
+            First Name
+            <input name="firstName" value={formData.firstName} onChange={handleChange} required />
+          </label>
+          <label>
+            Last Name
+            <input name="lastName" value={formData.lastName} onChange={handleChange} required />
+          </label>
+          <label>
+            Email
             <input name="email" type="email" value={formData.email} onChange={handleChange} required />
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Major</label>
-              <input name="major" value={formData.major} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>GPA</label>
-              <input name="gpa" type="number" step="0.1" min="0" max="4" value={formData.gpa} onChange={handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Current Semester</label>
+          </label>
+          <label>
+            Major
+            <input name="major" value={formData.major} onChange={handleChange} required />
+          </label>
+          <label>
+            Graduation Year
+            <input name="graduationYear" type="number" value={formData.graduationYear} onChange={handleChange} required />
+          </label>
+          <label>
+            GPA
+            <input name="gpa" type="number" step="0.1" min="0" max="4" value={formData.gpa} onChange={handleChange} />
+          </label>
+          <label>
+            Current Semester
             <input name="currentSemester" type="number" min="1" value={formData.currentSemester} onChange={handleChange} />
-          </div>
+          </label>
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={() => setShowModal(false)}>Cancel</button>
             <button type="submit" className="btn-primary" disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>

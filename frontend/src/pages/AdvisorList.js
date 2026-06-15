@@ -130,10 +130,7 @@ export default function AdvisorList() {
 
   return (
     <div className="advisor-list">
-      <div className="list-header">
-        <h1>Advisors</h1>
-        <button className="btn-primary" onClick={openCreate}>+ Add Advisor</button>
-      </div>
+      <h1>Advisors</h1>
 
       {error && <div className="error">{error}</div>}
 
@@ -144,6 +141,7 @@ export default function AdvisorList() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <button className="btn-primary" onClick={openCreate}>+ Add Advisor</button>
       </div>
 
       <div className="advisors-grid">
@@ -180,44 +178,38 @@ export default function AdvisorList() {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Add Advisor">
         <form className="modal-form" onSubmit={handleCreate}>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Advisor ID</label>
-              <input name="advisorId" value={formData.advisorId} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Max Students</label>
-              <input name="maxStudents" type="number" min="1" value={formData.maxStudents} onChange={handleChange} />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>First Name</label>
-              <input name="firstName" value={formData.firstName} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Last Name</label>
-              <input name="lastName" value={formData.lastName} onChange={handleChange} required />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Email</label>
+          <label>
+            Advisor ID
+            <input name="advisorId" value={formData.advisorId} onChange={handleChange} required />
+          </label>
+          <label>
+            First Name
+            <input name="firstName" value={formData.firstName} onChange={handleChange} required />
+          </label>
+          <label>
+            Last Name
+            <input name="lastName" value={formData.lastName} onChange={handleChange} required />
+          </label>
+          <label>
+            Email
             <input name="email" type="email" value={formData.email} onChange={handleChange} required />
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Office</label>
-              <input name="office" value={formData.office} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-              <label>Phone Number</label>
-              <input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Specializations (comma-separated)</label>
+          </label>
+          <label>
+            Office
+            <input name="office" value={formData.office} onChange={handleChange} />
+          </label>
+          <label>
+            Phone Number
+            <input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+          </label>
+          <label>
+            Specializations (comma-separated)
             <input name="specializations" value={formData.specializations} onChange={handleChange} placeholder="e.g. Data Science, AI, Networks" />
-          </div>
+          </label>
+          <label>
+            Max Students
+            <input name="maxStudents" type="number" min="1" value={formData.maxStudents} onChange={handleChange} />
+          </label>
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={() => setShowModal(false)}>Cancel</button>
             <button type="submit" className="btn-primary" disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>
@@ -226,9 +218,9 @@ export default function AdvisorList() {
       </Modal>
 
       <Modal isOpen={showAssignModal} onClose={() => setShowAssignModal(false)} title={`Assign Student to ${selectedAdvisor?.firstName || ''} ${selectedAdvisor?.lastName || ''}`}>
-        <form className="modal-form" onSubmit={handleAssign}>
-          <div className="form-group">
-            <label>Select Student</label>
+        <form className="modal-form assign-form" onSubmit={handleAssign}>
+          <label>
+            Select Student
             <select value={selectedStudentId} onChange={(e) => setSelectedStudentId(e.target.value)} required>
               <option value="">Choose a student...</option>
               {students.map(s => (
@@ -237,8 +229,8 @@ export default function AdvisorList() {
                 </option>
               ))}
             </select>
-            {students.length === 0 && <p className="form-hint">All students are already assigned to this advisor.</p>}
-          </div>
+            {students.length === 0 && <span className="form-hint">All students are already assigned to this advisor.</span>}
+          </label>
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={() => setShowAssignModal(false)}>Cancel</button>
             <button type="submit" className="btn-primary" disabled={assigning || !selectedStudentId}>

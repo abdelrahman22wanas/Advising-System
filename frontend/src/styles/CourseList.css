@@ -5,7 +5,7 @@
 
 .course-list h1 {
   color: var(--text-primary);
-  margin: 0;
+  margin: 0 0 2rem 0;
   font-size: 2rem;
 }
 
@@ -152,19 +152,30 @@
   grid-column: 1 / -1;
 }
 
+.filter-bar button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-glow);
+  white-space: nowrap;
+}
+
+.filter-bar button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-hover);
+}
+
 @media (max-width: 768px) {
   .course-grid {
     grid-template-columns: 1fr;
   }
 
-.list-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.course-list h1 {
+  .course-list h1 {
     font-size: 1.5rem;
   }
 }

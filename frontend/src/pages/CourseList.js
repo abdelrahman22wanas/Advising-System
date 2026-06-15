@@ -107,10 +107,9 @@ export default function CourseList() {
 
   return (
     <div className="course-list">
-      <div className="list-header">
-        <h1>Courses</h1>
-        <button className="btn-primary" onClick={openCreate}>+ Add Course</button>
-      </div>
+      <h1>Courses</h1>
+
+      {error && <div className="error">{error}</div>}
 
       <div className="filter-bar">
         <input
@@ -125,9 +124,8 @@ export default function CourseList() {
           value={filterDept}
           onChange={(e) => setFilterDept(e.target.value)}
         />
+        <button className="btn-primary" onClick={openCreate}>+ Add Course</button>
       </div>
-
-      {error && <div className="error">{error}</div>}
 
       <div className="course-grid">
         {filtered.map(course => (
@@ -162,63 +160,55 @@ export default function CourseList() {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Add Course">
         <form className="modal-form" onSubmit={handleCreate}>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Course ID</label>
-              <input name="courseId" value={formData.courseId} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Credits</label>
-              <input name="credits" type="number" min="1" value={formData.credits} onChange={handleChange} required />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Course Name</label>
+          <label>
+            Course ID
+            <input name="courseId" value={formData.courseId} onChange={handleChange} required />
+          </label>
+          <label>
+            Course Name
             <input name="courseName" value={formData.courseName} onChange={handleChange} required />
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Department</label>
-              <input name="department" value={formData.department} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Category</label>
-              <select name="category" value={formData.category} onChange={handleChange} required>
-                <option value="">Select category</option>
-                {COURSE_CATEGORIES.map(cat => (
-                  <option key={cat} value={cat}>{cat.replace(/_/g, ' ')}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Semester</label>
-              <input name="semester" value={formData.semester} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Instructor</label>
-              <input name="instructor" value={formData.instructor} onChange={handleChange} required />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Capacity</label>
-              <input name="capacity" type="number" min="1" value={formData.capacity} onChange={handleChange} required />
-            </div>
-            <div className="form-group">
-              <label>Recommended Semester</label>
-              <input name="recommendedSemester" type="number" min="1" value={formData.recommendedSemester} onChange={handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Prerequisites (comma-separated course IDs)</label>
+          </label>
+          <label>
+            Department
+            <input name="department" value={formData.department} onChange={handleChange} required />
+          </label>
+          <label>
+            Credits
+            <input name="credits" type="number" min="1" value={formData.credits} onChange={handleChange} required />
+          </label>
+          <label>
+            Category
+            <select name="category" value={formData.category} onChange={handleChange} required>
+              <option value="">Select category</option>
+              {COURSE_CATEGORIES.map(cat => (
+                <option key={cat} value={cat}>{cat.replace(/_/g, ' ')}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Semester
+            <input name="semester" value={formData.semester} onChange={handleChange} required />
+          </label>
+          <label>
+            Instructor
+            <input name="instructor" value={formData.instructor} onChange={handleChange} required />
+          </label>
+          <label>
+            Capacity
+            <input name="capacity" type="number" min="1" value={formData.capacity} onChange={handleChange} required />
+          </label>
+          <label>
+            Recommended Semester
+            <input name="recommendedSemester" type="number" min="1" value={formData.recommendedSemester} onChange={handleChange} />
+          </label>
+          <label>
+            Prerequisites (comma-separated course IDs)
             <input name="prerequisites" value={formData.prerequisites} onChange={handleChange} placeholder="e.g. CS101, CS102" />
-          </div>
-          <div className="form-group">
-            <label>Description</label>
+          </label>
+          <label>
+            Description
             <textarea name="description" value={formData.description} onChange={handleChange} rows="3" />
-          </div>
+          </label>
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={() => setShowModal(false)}>Cancel</button>
             <button type="submit" className="btn-primary" disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>
