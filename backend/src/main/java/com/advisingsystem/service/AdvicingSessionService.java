@@ -86,4 +86,17 @@ public class AdvicingSessionService {
     public int getTotalSessions() {
         return sessions.size();
     }
+
+    public List<AdvicingSession> getSessionsByStatus(String status) {
+        return sessions.values().stream()
+                .filter(s -> s.getStatus().equalsIgnoreCase(status))
+                .collect(Collectors.toList());
+    }
+
+    public void updateSessionStatus(String sessionId, String newStatus) {
+        AdvicingSession session = getSession(sessionId);
+        if (session != null) {
+            session.setStatus(newStatus.toUpperCase());
+        }
+    }
 }

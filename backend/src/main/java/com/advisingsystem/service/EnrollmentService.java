@@ -125,4 +125,40 @@ public class EnrollmentService {
                 .mapToInt(Course::getCredits)
                 .sum();
     }
+
+    public List<Enrollment> getAllEnrollments() {
+        List<Enrollment> enrollments = new ArrayList<>();
+        for (Student student : studentService.getAllStudents()) {
+            for (Course course : student.getEnrolledCourses()) {
+                enrollments.add(new Enrollment(
+                    student.getStudentId(), student.getFullName(),
+                    course.getCourseId(), course.getCourseName(), course.getCredits()));
+            }
+        }
+        return enrollments;
+    }
+
+    public List<Enrollment> getStudentEnrollments(String studentId) {
+        Student student = studentService.getStudent(studentId);
+        if (student == null) return new ArrayList<>();
+        return student.getEnrolledCourses().stream()
+                .map(c -> new Enrollment(
+                    student.getStudentId(), student.getFullName(),
+                    c.getCourseId(), c.getCourseName(), c.getCredits()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Enrollment> getCourseEnrollments(String courseId) {
+        List<Enrollment> enrollments = new ArrayList<>();
+        for (Student student : studentService.getAllStudents()) {
+            for (Course course : student.getEnrolledCourses()) {
+                if (course.getCourseId().equals(courseId)) {
+                    enrollments.add(new Enrollment(
+                        student.getStudentId(), student.getFullName(),
+                        course.getCourseId(), course.getCourseName(), course.getCredits()));
+                }
+            }
+        }
+        return enrollments;
+    }
 }

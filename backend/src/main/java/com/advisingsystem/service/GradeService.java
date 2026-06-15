@@ -88,4 +88,10 @@ public class GradeService {
     public int getTotalGrades() {
         return grades.size();
     }
+
+    public List<Grade> getStudentSemesterGrades(String studentId, String semester) {
+        return grades.stream()
+                .filter(g -> g.getStudentId().equals(studentId) && g.getSemester().equals(semester))
+                .collect(Collectors.toList());
+    }
 }

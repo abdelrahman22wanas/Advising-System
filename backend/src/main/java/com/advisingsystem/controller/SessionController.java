@@ -32,13 +32,13 @@ public class SessionController {
 
     @PostMapping
     public ResponseEntity<AdvicingSession> addSession(@RequestBody AdvicingSession session) {
-        sessionService.addSession(session);
+        sessionService.createSessionFromExisting(session);
         return ResponseEntity.status(201).body(session);
     }
 
     @DeleteMapping("/{sessionId}")
     public ResponseEntity<Void> removeSession(@PathVariable String sessionId) {
-        if (sessionService.removeSession(sessionId)) {
+        if (sessionService.cancelSession(sessionId)) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
@@ -46,12 +46,12 @@ public class SessionController {
 
     @GetMapping("/student/{studentId}")
     public ResponseEntity<List<AdvicingSession>> getStudentSessions(@PathVariable String studentId) {
-        return ResponseEntity.ok(sessionService.getStudentSessions(studentId));
+        return ResponseEntity.ok(sessionService.getSessionsByStudent(studentId));
     }
 
     @GetMapping("/advisor/{advisorId}")
     public ResponseEntity<List<AdvicingSession>> getAdvisorSessions(@PathVariable String advisorId) {
-        return ResponseEntity.ok(sessionService.getAdvisorSessions(advisorId));
+        return ResponseEntity.ok(sessionService.getSessionsByAdvisor(advisorId));
     }
 
     @GetMapping("/status/{status}")

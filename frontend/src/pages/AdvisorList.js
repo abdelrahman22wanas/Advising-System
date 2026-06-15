@@ -13,7 +13,7 @@ export default function AdvisorList() {
         const data = await advisorAPI.getAll();
         setAdvisors(data);
       } catch (err) {
-        setError(err.message);
+        setError(err.displayMessage);
       } finally {
         setLoading(false);
       }
@@ -35,9 +35,9 @@ export default function AdvisorList() {
             <h3>{advisor.firstName} {advisor.lastName}</h3>
             <p><strong>ID:</strong> {advisor.advisorId}</p>
             <p><strong>Office:</strong> {advisor.office || 'N/A'}</p>
-            <p><strong>Phone:</strong> {advisor.phone || 'N/A'}</p>
-            <p><strong>Specialization:</strong> {advisor.specialization || 'N/A'}</p>
-            <p><strong>Students:</strong> {advisor.studentIds?.length || 0}</p>
+            <p><strong>Phone:</strong> {advisor.phoneNumber || 'N/A'}</p>
+            <p><strong>Specialization:</strong> {advisor.specializations?.join(', ') || 'N/A'}</p>
+            <p><strong>Students:</strong> {advisor.assignedStudentIds?.length || 0}</p>
           </div>
         ))}
       </div>

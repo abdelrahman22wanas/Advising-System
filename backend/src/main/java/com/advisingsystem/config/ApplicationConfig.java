@@ -1,7 +1,7 @@
 package com.advisingsystem.config;
 
 import com.advisingsystem.data.CSECurriculumLoader;
-import com.advisingsystem.javafx.SampleDataLoader;
+import com.advisingsystem.data.SampleDataLoader;
 import com.advisingsystem.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -26,23 +26,23 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public EnrollmentService enrollmentService(StudentService studentService, CourseService courseService) {
-        return new EnrollmentService(studentService, courseService);
+    public GradeService gradeService(CourseService courseService, StudentService studentService) {
+        return new GradeService(courseService, studentService);
     }
 
     @Bean
-    public AdvicingSessionService advicingSessionService(StudentService studentService, AdvisorService advisorService) {
-        return new AdvicingSessionService(studentService, advisorService);
+    public EnrollmentService enrollmentService(StudentService studentService, CourseService courseService, GradeService gradeService) {
+        return new EnrollmentService(studentService, courseService, gradeService);
     }
 
     @Bean
-    public GradeService gradeService(StudentService studentService) {
-        return new GradeService(studentService);
+    public AdvicingSessionService advicingSessionService() {
+        return new AdvicingSessionService();
     }
 
     @Bean
-    public CurriculumService curriculumService(CourseService courseService) {
-        return new CurriculumService(courseService);
+    public CurriculumService curriculumService() {
+        return new CurriculumService();
     }
 
     @Bean
@@ -50,17 +50,14 @@ public class ApplicationConfig {
             StudentService studentService,
             CourseService courseService,
             AdvisorService advisorService,
+            GradeService gradeService,
             EnrollmentService enrollmentService,
-            AdvicingSessionService sessionService,
-            GradeService gradeService) {
+            CurriculumService curriculumService,
+            AdvicingSessionService sessionService) {
         return args -> {
             try {
-                // Load CSE curriculum
-                CSECurriculumLoader.loadCurriculum(courseService);
-                
-                // Load sample data
-                SampleDataLoader.loadSampleData(studentService, courseService, advisorService, enrollmentService, sessionService, gradeService);
-                
+                SampleDataLoader.loadSampleData(studentService, courseService, advisorService,
+                    gradeService, enrollmentService, curriculumService, sessionService);
                 System.out.println("Sample data loaded successfully!");
             } catch (Exception e) {
                 System.err.println("Error loading initial data: " + e.getMessage());

@@ -19,7 +19,7 @@ export default function CourseList() {
         }
         setCourses(data);
       } catch (err) {
-        setError(err.message);
+        setError(err.displayMessage);
       } finally {
         setLoading(false);
       }
@@ -32,47 +32,32 @@ export default function CourseList() {
   return (
     <div className="course-list">
       <h1>📚 Courses</h1>
-      
-      <div className="filter-section">
+
+      <div className="filter-bar">
         <input
           type="text"
           placeholder="Filter by department..."
           value={filterDept}
           onChange={(e) => setFilterDept(e.target.value)}
-          className="filter-input"
         />
       </div>
 
       {error && <div className="error">{error}</div>}
 
-      <div className="table-container">
-        <table className="courses-table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Credits</th>
-              <th>Semester</th>
-              <th>Capacity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map(course => (
-              <tr key={course.courseId}>
-                <td>{course.courseId}</td>
-                <td>{course.courseName}</td>
-                <td>{course.department}</td>
-                <td>{course.credits}</td>
-                <td>{course.semester}</td>
-                <td>{course.capacity}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="course-grid">
+        {courses.map(course => (
+          <div key={course.courseId} className="course-card">
+            <h3>{course.courseName}</h3>
+            <span className="course-code">{course.courseId}</span>
+            <p><strong>Department:</strong> {course.department}</p>
+            <p><strong>Semester:</strong> {course.semester}</p>
+            <p><strong>Capacity:</strong> {course.capacity}</p>
+            <span className="credits-badge">{course.credits} Credits</span>
+          </div>
+        ))}
       </div>
 
-      {courses.length === 0 && (
+      {courses.length === 0 && !loading && (
         <div className="no-data">No courses found</div>
       )}
     </div>

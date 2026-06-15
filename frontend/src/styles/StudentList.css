@@ -4,17 +4,20 @@
 }
 
 .student-list h1 {
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 2rem;
   font-size: 2rem;
 }
 
 .filter-bar {
-  background: white;
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   margin-bottom: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--glass-border);
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -24,55 +27,76 @@
   flex: 1;
   min-width: 200px;
   padding: 0.75rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-bar input:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
 }
 
 .filter-bar button {
   padding: 0.75rem 1.5rem;
-  background: #667eea;
+  background: var(--accent-gradient);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-glow);
 }
 
 .filter-bar button:hover {
-  background: #764ba2;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-hover);
+}
+
+.filter-bar button:active {
+  transform: translateY(0);
+}
+
+.students-table-wrapper {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .students-table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .students-table thead {
-  background: #f7fafc;
+  background: var(--table-header-bg);
   font-weight: 600;
-  color: #2d3748;
-  border-bottom: 2px solid #e2e8f0;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--table-border);
 }
 
 .students-table th,
 .students-table td {
   padding: 1rem;
   text-align: left;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--table-border);
+}
+
+.students-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .students-table tbody tr:hover {
-  background: #f7fafc;
-}
-
-.students-table td:last-child {
-  border-bottom: none;
+  background: var(--table-row-hover);
 }
 
 .gpa-badge {
@@ -84,18 +108,18 @@
 }
 
 .gpa-excellent {
-  background: #c6f6d5;
-  color: #22543d;
+  background: var(--badge-excellent-bg);
+  color: var(--badge-excellent-text);
 }
 
 .gpa-good {
-  background: #bee3f8;
-  color: #2c5282;
+  background: var(--badge-good-bg);
+  color: var(--badge-good-text);
 }
 
 .gpa-average {
-  background: #feebc8;
-  color: #7c2d12;
+  background: var(--badge-average-bg);
+  color: var(--badge-average-text);
 }
 
 .loading,
@@ -105,22 +129,45 @@
   align-items: center;
   min-height: 300px;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--loading-color);
 }
 
 .error {
-  background: #fed7d7;
-  color: #c53030;
-  border-radius: 8px;
+  background: var(--error-bg);
+  color: var(--error-text);
+  border-radius: var(--radius-md);
   margin: 2rem 0;
+  border: 1px solid var(--border-color);
+}
+
+.btn-delete {
+  padding: 0.5rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background: var(--color-error);
+  color: white;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
 }
 
 .no-data {
   text-align: center;
   padding: 3rem;
-  background: white;
-  border-radius: 8px;
-  color: #718096;
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  color: var(--no-data-color);
   font-size: 1.1rem;
 }
 
@@ -140,5 +187,9 @@
 
   .filter-bar input {
     min-width: auto;
+  }
+
+  .student-list h1 {
+    font-size: 1.5rem;
   }
 }

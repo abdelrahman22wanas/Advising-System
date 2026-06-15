@@ -19,7 +19,7 @@ export default function StudentList() {
         }
         setStudents(data);
       } catch (err) {
-        setError(err.message);
+        setError(err.displayMessage);
       } finally {
         setLoading(false);
       }
@@ -33,7 +33,7 @@ export default function StudentList() {
         await studentAPI.delete(id);
         setStudents(students.filter(s => s.studentId !== id));
       } catch (err) {
-        setError(err.message);
+        setError(err.displayMessage);
       }
     }
   };
@@ -44,19 +44,18 @@ export default function StudentList() {
     <div className="student-list">
       <h1>👨‍🎓 Students</h1>
       
-      <div className="filter-section">
+      <div className="filter-bar">
         <input
           type="text"
           placeholder="Filter by major..."
           value={filterMajor}
           onChange={(e) => setFilterMajor(e.target.value)}
-          className="filter-input"
         />
       </div>
 
       {error && <div className="error">{error}</div>}
 
-      <div className="table-container">
+      <div className="students-table-wrapper">
         <table className="students-table">
           <thead>
             <tr>

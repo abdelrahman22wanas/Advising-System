@@ -13,7 +13,7 @@ export default function Dashboard() {
         const data = await dashboardAPI.getStats();
         setStats(data);
       } catch (err) {
-        setError(err.message);
+        setError(err.displayMessage);
       } finally {
         setLoading(false);
       }

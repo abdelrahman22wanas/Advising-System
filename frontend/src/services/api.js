@@ -4,10 +4,24 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
 
 const api = axios.create({
   baseURL: API_URL,
+  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+api.interceptors.response.use(
+  response => response.data,
+  error => {
+    const message =
+      error.response?.data?.message ||
+      error.response?.data?.error ||
+      (error.code === 'ECONNABORTED' ? 'Request timed out' : null) ||
+      error.message;
+    error.displayMessage = message;
+    return Promise.reject(error);
+  }
+);
 
 export const studentAPI = {
   getAll: () => api.get('/students'),

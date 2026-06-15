@@ -1,0 +1,141 @@
+/* ===== Light Theme (default) ===== */
+:root {
+  /* Backgrounds */
+  --bg-primary: #f0f2f5;
+  --bg-secondary: #e8ecf1;
+  --bg-gradient: linear-gradient(135deg, #f0f2f5 0%, #e0e4ec 100%);
+
+  /* Glass surfaces */
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.25);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.5);
+
+  /* Nav & Sidebar */
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --sidebar-bg: rgba(255, 255, 255, 0.85);
+  --hover-bg: rgba(108, 99, 255, 0.08);
+
+  /* Text */
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-on-accent: #ffffff;
+
+  /* Accent colors */
+  --accent-primary: #6c63ff;
+  --accent-secondary: #7c3aed;
+  --accent-gradient: linear-gradient(135deg, #6c63ff 0%, #7c3aed 100%);
+
+  /* Semantic colors */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.15);
+  --shadow-glow-hover: 0 0 30px rgba(108, 99, 255, 0.25);
+
+  /* Borders */
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-light: rgba(0, 0, 0, 0.04);
+  --table-border: rgba(0, 0, 0, 0.06);
+
+  /* Border radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Input fields */
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #6c63ff;
+
+  /* Tables */
+  --table-header-bg: rgba(0, 0, 0, 0.02);
+  --table-row-hover: rgba(108, 99, 255, 0.04);
+
+  /* Badges */
+  --badge-excellent-bg: rgba(16, 185, 129, 0.15);
+  --badge-excellent-text: #065f46;
+  --badge-good-bg: rgba(59, 130, 246, 0.15);
+  --badge-good-text: #1e40af;
+  --badge-average-bg: rgba(245, 158, 11, 0.15);
+  --badge-average-text: #92400e;
+
+  /* Misc */
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --error-text: #dc2626;
+  --loading-color: #6b7280;
+  --no-data-color: #9ca3af;
+  --credits-badge-bg: rgba(16, 185, 129, 0.15);
+  --credits-badge-text: #065f46;
+  --course-code-bg: rgba(108, 99, 255, 0.1);
+  --course-code-text: #6c63ff;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"] {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #16162a;
+  --bg-gradient: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16162a 100%);
+
+  --bg-card: rgba(26, 26, 46, 0.75);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --nav-bg: rgba(15, 15, 26, 0.85);
+  --sidebar-bg: rgba(15, 15, 26, 0.9);
+  --hover-bg: rgba(108, 99, 255, 0.12);
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #8888a0;
+  --text-muted: #6b6b85;
+  --text-on-accent: #ffffff;
+
+  --accent-primary: #6c63ff;
+  --accent-secondary: #00d4ff;
+  --accent-gradient: linear-gradient(135deg, #6c63ff 0%, #00d4ff 100%);
+
+  --color-success: #00ff88;
+  --color-error: #ff4757;
+  --color-warning: #ffa502;
+  --color-info: #00d4ff;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.3);
+  --shadow-glow-hover: 0 0 35px rgba(108, 99, 255, 0.5);
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.04);
+  --table-border: rgba(255, 255, 255, 0.06);
+
+  --input-bg: rgba(26, 26, 46, 0.8);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-focus-border: #6c63ff;
+
+  --table-header-bg: rgba(255, 255, 255, 0.03);
+  --table-row-hover: rgba(108, 99, 255, 0.08);
+
+  --badge-excellent-bg: rgba(0, 255, 136, 0.15);
+  --badge-excellent-text: #00ff88;
+  --badge-good-bg: rgba(0, 212, 255, 0.15);
+  --badge-good-text: #00d4ff;
+  --badge-average-bg: rgba(255, 165, 2, 0.15);
+  --badge-average-text: #ffa502;
+
+  --error-bg: rgba(255, 71, 87, 0.15);
+  --error-text: #ff6b7a;
+  --loading-color: #8888a0;
+  --no-data-color: #6b6b85;
+  --credits-badge-bg: rgba(0, 255, 136, 0.15);
+  --credits-badge-text: #00ff88;
+  --course-code-bg: rgba(108, 99, 255, 0.2);
+  --course-code-text: #8b83ff;
+}

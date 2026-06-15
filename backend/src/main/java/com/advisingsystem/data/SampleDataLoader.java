@@ -1,4 +1,4 @@
-package com.advisingsystem.javafx;
+package com.advisingsystem.data;
 
 import com.advisingsystem.model.*;
 import com.advisingsystem.service.*;

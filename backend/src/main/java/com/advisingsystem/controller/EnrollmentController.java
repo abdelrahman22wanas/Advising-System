@@ -1,5 +1,6 @@
 package com.advisingsystem.controller;
 
+import com.advisingsystem.model.Course;
 import com.advisingsystem.model.Enrollment;
 import com.advisingsystem.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,8 @@ public class EnrollmentController {
 
     @GetMapping("/student/{studentId}/available-courses")
     public ResponseEntity<List<String>> getAvailableCoursesForStudent(@PathVariable String studentId) {
-        return ResponseEntity.ok(enrollmentService.getAvailableCoursesForStudent(studentId));
+        List<Course> courses = enrollmentService.getAvailableCoursesForStudent(studentId);
+        return ResponseEntity.ok(courses.stream().map(Course::getCourseId).toList());
     }
 
     @GetMapping("/student/{studentId}/credits")

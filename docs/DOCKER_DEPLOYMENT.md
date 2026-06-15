@@ -99,6 +99,19 @@ railway up
 3. Set environment variables
 4. Deploy
 
+### Fly.io
+```bash
+# Install Fly CLI
+flyctl auth login
+
+# Deploy backend from the backend directory
+cd backend
+flyctl launch
+flyctl deploy
+```
+
+Use the generated Fly URL as `REACT_APP_API_URL` for the frontend.
+
 ### Docker Hub Registry
 ```bash
 # Build and tag
@@ -143,6 +156,7 @@ gcloud run deploy advising-frontend --image gcr.io/PROJECT-ID/advising-frontend
 ### Backend
 - `SPRING_APPLICATION_NAME` - Application name
 - `SERVER_PORT` - Port (default: 8080)
+- `SPRING_PROFILES_ACTIVE` - Optional profile for hosted runs
 
 ### Frontend
 - `REACT_APP_API_URL` - Backend API URL (required)

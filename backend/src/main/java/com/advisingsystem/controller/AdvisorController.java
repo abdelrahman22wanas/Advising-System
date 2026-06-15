@@ -2,6 +2,7 @@ package com.advisingsystem.controller;
 
 import com.advisingsystem.model.Advisor;
 import com.advisingsystem.service.AdvisorService;
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,7 +57,7 @@ public class AdvisorController {
     public ResponseEntity<List<String>> getAdvisedStudents(@PathVariable String advisorId) {
         Advisor advisor = advisorService.getAdvisor(advisorId);
         if (advisor != null) {
-            return ResponseEntity.ok(advisor.getStudentIds());
+            return ResponseEntity.ok(advisor.getAssignedStudentIds());
         }
         return ResponseEntity.notFound().build();
     }

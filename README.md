@@ -110,7 +110,7 @@ No database required - data is in-memory!
 | **Backend** | Java 21 LTS + Spring Boot 3.2 |
 | **Frontend** | React 18+ + Axios |
 | **Build** | Maven 3.6+ |
-| **Deployment** | Vercel (frontend) + Railway/Render/Heroku/Docker (backend) |
+| **Deployment** | Vercel (frontend) + Railway/Render/Fly.io/Heroku/Docker (backend) |
 
 ---
 
@@ -121,6 +121,7 @@ No database required - data is in-memory!
 | ⭐ **Recommended** | Railway | Vercel | 5 min | Free |
 | **Alternative** | Render | Vercel | 10 min | Free |
 | **Docker** | Container | Container | 5 min | Free |
+| **Fly.io** | Fly.io | Vercel | 10 min | Free tier |
 | **Traditional** | Heroku | Vercel | 15 min | Paid |
 
 See [docs/DEPLOY_TO_VERCEL.md](docs/DEPLOY_TO_VERCEL.md) for detailed instructions.
@@ -176,7 +177,7 @@ Reference Files:    archive/
    - Visit http://localhost:3000
 
 3. **Deploy to Production**
-   - Backend → Railway/Render/Heroku or Docker
+   - Backend → Railway/Render/Fly.io/Heroku or Docker
    - Frontend → Vercel or Docker
    - See deployment guides for details
 
