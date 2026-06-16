@@ -5,21 +5,13 @@ FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copy the pom.xml file first to leverage Docker cache
-<<<<<<< HEAD
 COPY backend/pom.xml .
-=======
-COPY pom.xml .
->>>>>>> 7240d6b729d0c26525c59f7d69531bbf8cf7c185
 
 # Download dependencies - this layer will be cached unless pom.xml changes
 RUN mvn dependency:go-offline -B
 
 # Copy the source code
-<<<<<<< HEAD
 COPY backend/src ./src
-=======
-COPY src ./src
->>>>>>> 7240d6b729d0c26525c59f7d69531bbf8cf7c185
 
 # Build the application
 RUN mvn clean package -DskipTests
