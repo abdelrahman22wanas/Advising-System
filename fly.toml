@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 # fly.toml app configuration file generated for advising-system-bp2j5w on 2026-06-16T05:25:56Z
+=======
+# fly.toml app configuration file generated for advising-system on 2026-06-15T19:18:44Z
+>>>>>>> 7240d6b729d0c26525c59f7d69531bbf8cf7c185
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
+<<<<<<< HEAD
 app = 'advising-system-bp2j5w'
+=======
+app = 'advising-system'
+>>>>>>> 7240d6b729d0c26525c59f7d69531bbf8cf7c185
 primary_region = 'cdg'
 
 [build]
