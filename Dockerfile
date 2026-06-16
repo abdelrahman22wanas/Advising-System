@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM maven:3.9-eclipse-temurin-17 AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 
 # Set the working directory
 WORKDIR /app
@@ -17,13 +17,15 @@ COPY backend/src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the runtime image
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-jammy
 
 # Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends dumb-init \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user to run the application
-RUN addgroup -g 1000 spring && adduser -u 1000 -G spring -s /bin/sh -D spring
+RUN groupadd -g 1000 spring && useradd -u 1000 -g spring -s /bin/sh -m spring
 
 # Set the working directory
 WORKDIR /app
