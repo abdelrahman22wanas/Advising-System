@@ -9,7 +9,9 @@ import Enrollments from './pages/Enrollments';
 import Sessions from './pages/Sessions';
 import Grades from './pages/Grades';
 import DegreeProgress from './pages/DegreeProgress';
+import Warnings from './pages/Warnings';
 import ThemeToggle from './components/ThemeToggle';
+import WarningBadge from './components/WarningBadge';
 import './styles/App.css';
 import './styles/Modal.css';
 import './styles/Home.css';
@@ -24,6 +26,7 @@ function AppContent() {
         <div className="navbar-content">
           <h1>Academic Advising System</h1>
           <div className="navbar-spacer" />
+          {!isHome && <WarningBadge />}
           <ThemeToggle />
         </div>
       </header>
@@ -53,6 +56,7 @@ function AppContent() {
                 <li><NavLink to="/sessions">Sessions</NavLink></li>
                 <li><NavLink to="/grades">Grades</NavLink></li>
                 <li><NavLink to="/degree-progress">Degree Progress</NavLink></li>
+                <li><NavLink to="/warnings">Warnings</NavLink></li>
               </ul>
             </nav>
           </aside>
@@ -69,6 +73,7 @@ function AppContent() {
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/grades" element={<Grades />} />
             <Route path="/degree-progress" element={<DegreeProgress />} />
+            <Route path="/warnings" element={<Warnings />} />
           </Routes>
         </main>
       </div>
